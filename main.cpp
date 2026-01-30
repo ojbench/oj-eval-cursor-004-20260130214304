@@ -508,7 +508,7 @@ int main() {
                 books.erase(selectedISBN);
                 bCopy.ISBN = newISBN;
                 books[newISBN] = bCopy;
-                if (!loginStack.empty()) loginStack.back().second = newISBN;
+                for (auto& p : loginStack) if (p.second == selectedISBN) p.second = newISBN;
                 selectedISBN = newISBN;
             }
             saveBooks();
